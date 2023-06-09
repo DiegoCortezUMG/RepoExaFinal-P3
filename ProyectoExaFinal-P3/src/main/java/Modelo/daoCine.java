@@ -79,7 +79,7 @@ public class daoCine {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, cine.getNombreCine());
             stmt.setString(2, cine.getDirCine());
-            stmt.setInt(, cine.getIdCine());
+            stmt.setInt(3, cine.getIdCine());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);

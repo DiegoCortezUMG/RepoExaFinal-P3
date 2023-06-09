@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.daoPeli;
 import java.util.List;
 
 /**
@@ -98,13 +99,13 @@ public class clsPeli {
     }
     public List<clsPeli> getListadoP()
     {
-        daoPelis daopeli = new daoPeli();
-        List<clsPeli> listadoPelis = daoPeli.consultaP();
+        daoPeli daopeli = new daoPeli();
+        List<clsPeli> ListadoPelis= daopeli.consultaP();;
         return ListadoPelis;
     }
     public int setBorrarP(clsPeli peli)
     {
-        daoPeli daopeli = new daopeli();
+        daoPeli daopeli = new daoPeli();
         return daopeli.borrarP(peli);
     }          
     public int setIngresarP(clsPeli peli)

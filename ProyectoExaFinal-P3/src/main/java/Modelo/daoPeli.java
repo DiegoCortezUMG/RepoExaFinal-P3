@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Controlador.clsCine;
 import Controlador.clsPeli;
 import java.sql.*;
 import java.util.ArrayList;
@@ -59,7 +58,7 @@ public class daoPeli {
         }
         return usuarios;
     }
-    public int ingresaC(clsPeli cine) {
+    public int ingresaP(clsPeli cine) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -83,7 +82,7 @@ public class daoPeli {
         }
         return rows;
     }
-    public int actualizaC(clsPeli cine) {
+    public int actualizaP(clsPeli cine) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -110,7 +109,7 @@ public class daoPeli {
         }
         return rows;
     }
-    public int borrarC(clsPeli cine) {
+    public int borrarP(clsPeli cine) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -118,7 +117,7 @@ public class daoPeli {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, cine.getIdCine());
+            stmt.setInt(1, cine.getIdPeli());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
