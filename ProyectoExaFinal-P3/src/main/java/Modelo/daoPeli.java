@@ -16,9 +16,8 @@ import java.util.List;
 public class daoPeli {
     private static final String SQL_SELECT = "SELECT idPeliculas,Nombre,Clasificación,Genero,Subtitulado,Idioma,precio FROM peliculas";
     private static final String SQL_INSERT = "INSERT INTO peliculas(idPeliculas,Nombre,Clasificación,Genero,Subtitulado,Idioma,precio) VALUES(?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE peliculas SET idPeliculas=?,Nombre=?,Clasificación=?,Genero=?,Subtitulado=?,Idioma=?,precio=? WHERE idPeliculas = ?";
+    private static final String SQL_UPDATE = "UPDATE peliculas SET Nombre=?,Clasificación=?,Genero=?,Subtitulado=?,Idioma=?,precio=? WHERE idPeliculas = ?";
     private static final String SQL_DELETE = "DELETE FROM peliculas WHERE idPeliculas=?";
-    private static final String SQL_SELECT_ID = "SELECT idPeliculas,Nombre,Clasificación,Genero,Subtitulado,Idioma,precio FROM peliculas WHERE idPeliculas = ?";     
     public List<clsPeli> consultaP() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -90,14 +89,13 @@ public class daoPeli {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setInt(1, cine.getIdPeli());
-            stmt.setString(2, cine.getNombrePeli());
-            stmt.setString(3, cine.getClsPeli());
-            stmt.setString(4, cine.getGenPeli());
-            stmt.setString(5, cine.getSubPeli());
-            stmt.setString(6, cine.getIdiomaPeli());
-            stmt.setString(7, cine.getPrecioPeli());
-            stmt.setInt(8, cine.getIdPeli());
+            stmt.setString(1, cine.getNombrePeli());
+            stmt.setString(2, cine.getClsPeli());
+            stmt.setString(3, cine.getGenPeli());
+            stmt.setString(4, cine.getSubPeli());
+            stmt.setString(5, cine.getIdiomaPeli());
+            stmt.setString(6, cine.getPrecioPeli());
+            stmt.setInt(7, cine.getIdPeli());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);

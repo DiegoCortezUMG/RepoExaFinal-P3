@@ -6,6 +6,7 @@
 package Vista;
 
 //import Seguridad.Controlador.clsBitacora;
+import Controlador.clsBitacora;
 import Controlador.clsUsuario;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,6 @@ import javax.swing.JOptionPane;
 public class frmMantUsuario extends javax.swing.JInternalFrame {
     
 int codigoAplicacion=10;
-
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -31,7 +31,6 @@ int codigoAplicacion=10;
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     }
-
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -305,9 +304,8 @@ int codigoAplicacion=10;
         llenadoDeTablas();
         
         int resultadoBitacora=0;
-        //clsBitacora bitacoraRegistro = new clsBitacora();
-        //resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
-        
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(1,codigoAplicacion,"DEL");
         limpiarTextos();
     }//GEN-LAST:event_btnEliminarActionPerformed
     int contador=0; 
@@ -318,14 +316,13 @@ int codigoAplicacion=10;
             clsUsuario usuario = new clsUsuario();
             usuario.setNombreUsuario(txtNombre.getText());
             usuario.setContrasenaUsuario(txtContrasena.getText());
-            //Agregando codificado de contraseña = Anthony Avalos 
-            //usuario.setContrasenaUsuario(txtContrasena.getText());
             usuario.setIngresarUsuario(usuario);
+            
             JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                         "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-            //int resultadoBitacora=0;
-            //clsBitacora bitacoraRegistro = new clsBitacora();
-            //resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
+            int resultadoBitacora=0;
+            clsBitacora bitacoraRegistro = new clsBitacora();
+            resultadoBitacora = bitacoraRegistro.setIngresarBitacora(1,codigoAplicacion,"INS");
             llenadoDeTablas();
             limpiarTextos();
         }else{
@@ -351,12 +348,13 @@ int codigoAplicacion=10;
         System.out.println("Usuario retornado:" + usuario);        
         txtNombre.setText(usuario.getNombreUsuario());
         txtContrasena.setText(usuario.getContrasenaUsuario());
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(1,codigoAplicacion,"BUS");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
-        
-        //clsSeguridad c = new clsSeguridad();
+        // TODO add your handling code here:  
         clsUsuario usuario = new clsUsuario();
         usuario.setIdUsuario(Integer.parseInt(txtbuscado.getText()));
         usuario.setNombreUsuario(txtNombre.getText());
@@ -367,11 +365,9 @@ int codigoAplicacion=10;
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
-        
-        //int resultadoBitacora=0;
-        //clsBitacora bitacoraRegistro = new clsBitacora();
-        //resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
-        
+        int resultadoBitacora=0;
+            clsBitacora bitacoraRegistro = new clsBitacora();
+            resultadoBitacora = bitacoraRegistro.setIngresarBitacora(1,codigoAplicacion,"UPD");
         limpiarTextos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
