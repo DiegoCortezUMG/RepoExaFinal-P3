@@ -79,7 +79,7 @@ public class daoUsuario {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, usuario.getNombreUsuario());
             stmt.setString(2, usuario.getContrasenaUsuario());
-            stmt.setInt(10, usuario.getIdUsuario());
+            stmt.setInt(3, usuario.getIdUsuario());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
